@@ -25,6 +25,12 @@ load_data <- function() {
     # Extract a subset
     data = data[ data$Date=="1/2/2007" | data$Date=="2/2/2007", ]
     
-
+    # Transform data
+    data$Date = as.Date(data$Date, format="%d/%m/%Y")
+    data$DateTime = as.POSIXct(paste( data$Date, data$Time )
+        , format="%Y-%m-%d %H:%M:%S")
+    
+    # Return the data table
+    data
 }
 
